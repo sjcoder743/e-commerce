@@ -19,7 +19,7 @@ app.use(cors({
   origin: process.env.FRONTEND_URL
 })); // Enable CORS
 app.use(express.json()); // Parse JSON bodies
-app.use(cookieParser())
+app.use(cookieParser());
 
 // import routes here
 import router from "./routes/index.js";
