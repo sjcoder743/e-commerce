@@ -2,9 +2,6 @@ import User from "../model/userModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// Secret key for JWT
-const secretKey = process.env.JWT_SECRET || "jkhsadkjlhsdjlu98y49kjsd";
-
 async function signInUser(req, res) {
   try {
     const { email, password } = req.body;
@@ -31,36 +28,32 @@ async function signInUser(req, res) {
     // Check if password matches
     const checkPassword = await bcrypt.compare(password, user.password);
     console.log("check password: ", checkPassword);
-    if (checkPassword) {
-      const tokenData = {
-        _id: user._id,
-        email: user.email,
-      };
-      const token = await jwt.sign(tokenData, process.env.JWT_SECRET, {
-        expiresIn: 60 * 60 * 8,
+    if (!checkPassword) {
+      return res.status(401).json({
+        message: "Invalid password",
+        error: true,
+        success: false,
       });
-
-      const tokenOption = {
-        httpOnly: true,
-        secure: true,
-      };
-
-      res.cookie("token", token, tokenOption).status(200).json({
-        message: "Login successfully",
-        data: token,
-        success: true,
-        error: false,
-      });
-    } else {
-      throw new Error("Please check Password");
     }
 
-    // Respond with the token
-    res.status(200).json({
-      message: "Login successful",
+    const tokenData = {
+      _id: user._id,
+      email: user.email,
+    };
+    const token = await jwt.sign(tokenData, process.env.JWT_SECRET, {
+      expiresIn: 60 * 60 * 8,
+    });
+
+    const tokenOption = {
+      httpOnly: true,
+      secure: true,
+    };
+
+    res.cookie("token", token, tokenOption).status(200).json({
+      message: "Login successfully",
       data: token,
-      error: false,
       success: true,
+      error: false,
     });
   } catch (error) {
     console.log("Error of user: ", error.message);

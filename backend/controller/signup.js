@@ -4,7 +4,6 @@ import bcrypt from "bcryptjs";
 async function signUpUser(req, res) {
   try {
     const { name, email, password } = req.body;
-    // console.log("Request body is : ", req.body);
 
     // Check if all fields are provided
     if (!email || !name || !password) {
@@ -17,11 +16,10 @@ async function signUpUser(req, res) {
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
-    console.log("User : ", existingUser);
 
     if (existingUser) {
       return res.status(409).json({
-        message: "User with this is email already exists",
+        message: "User with this email already exists",
         error: true,
         success: false
       });
@@ -42,7 +40,7 @@ async function signUpUser(req, res) {
     const userData = new User(payLoad);
     const savedUser = await userData.save();
 
-    res.status(201).json({
+    return res.status(201).json({
       data: savedUser,
       error: false,
       success: true,
@@ -50,12 +48,11 @@ async function signUpUser(req, res) {
     });
   } catch (error) {
     console.log("Error of user: ", error.message);
-    res.status(500).json({
+    return res.status(500).json({
       message: error.message,
       error: true,
       success: false
     });
   }
 }
-
 export default signUpUser;
