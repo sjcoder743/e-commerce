@@ -3,6 +3,7 @@ import signUpUser from "../controller/signup.js";
 import signInUser from "../controller/signin.js";
 import userDetail from "../controller/userDetail.js";
 import authToken from "../middleware/authToken.js";
+import logOutUser from "../controller/logout.js";
 
 
 const router = express.Router()
@@ -11,5 +12,6 @@ const router = express.Router()
 router.post("/signup", signUpUser)
 router.post("/signin", signInUser)
 router.get("/user-details", authToken, userDetail)
+router.get("/logout", logOutUser)
 
 export default router
