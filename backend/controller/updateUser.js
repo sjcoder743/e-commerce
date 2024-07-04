@@ -7,7 +7,7 @@ async function updateUser(req, res) {
     const payLoad = {
       ...(email && { email: email }),
       ...(name && { name: name }),
-      ...(role && { role: name }),
+      ...(role && { role: role }),
     }
     const user = await userModel.findById(userSession)
     console.log("user.role is: ", user.role);
