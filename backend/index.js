@@ -16,7 +16,8 @@ dotenv.config({
 // Middleware
 app.use(cors({
   credentials: true,
-  origin: process.env.FRONTEND_URL
+  origin: process.env.FRONTEND_URL,
+   limit: '50mb'
 })); // Enable CORS
 app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser());

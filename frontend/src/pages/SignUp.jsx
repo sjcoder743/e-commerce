@@ -53,7 +53,7 @@ function SignUp() {
       }
       console.log("Data : ", apiData);
     } else {
-      toast.error("password and confirm password must be same");
+      toast.error("Both the password must be same");
     }
   };
 

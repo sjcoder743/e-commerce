@@ -1,3 +1,5 @@
+import allUsers from "../../../backend/controller/allUsers"
+
 const backendDomain = "http://localhost:8080"
 const summaryApi = {
   signUp: {
@@ -15,6 +17,14 @@ const summaryApi = {
   logOutUser: {
     url: `${backendDomain}/api/logout`,
     method: "get"
+  },
+  allUsers: {
+    url: `${backendDomain}/api/all-users`,
+    method: 'get'
+  },
+  updateUser: {
+    url: `${backendDomain}/api/update-user`,
+    method: 'post'
   }
 }
 

@@ -7,9 +7,9 @@ import summaryApi from "../common";
 import { toast } from "react-toastify";
 import { setUserDetails } from "../store/userSlice";
 
+
 function Header() {
   const user = useSelector((state) => state?.user.user);
-  console.log("user details in header : ", user);
   const [displayMenu, setDisplayMenu] = useState(false);
 
   const dispatch = useDispatch();
@@ -56,11 +56,11 @@ function Header() {
           <div className="relative group flex justify-center">
             <div className="text-2xl cursor-pointer ">
               {user?.profilePhoto ? (
-                <img 
-                  src={user.profilePhoto} 
-                  className="w-10 h-10 rounded-full" 
-                  alt="User Profile" 
-                  onClick={() => setDisplayMenu(prev => !prev)} 
+                <img
+                  src={user.profilePhoto}
+                  className="w-10 h-10 rounded-full"
+                  alt="User Profile"
+                  onClick={() => setDisplayMenu(prev => !prev)}
                 />
               ) : (
                 <FaUserCircle onClick={() => setDisplayMenu(prev => !prev)} />
@@ -69,7 +69,7 @@ function Header() {
             {displayMenu && (
               <div className="absolute bg-white top-12 shadow-lg rounded p-2 h-fit">
                 <nav>
-                  <Link to="/admin-panel" className="block whitespace-nowrap hover:bg-slate-100 p-2">
+                  <Link to="/admin-panel" className="whitespace-nowrap hover:bg-slate-100 p-2 " onClick={() => setDisplayMenu(prev => !prev)}>
                     Admin panel
                   </Link>
                 </nav>

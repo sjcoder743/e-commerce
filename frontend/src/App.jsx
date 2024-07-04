@@ -8,6 +8,7 @@ import summaryApi from "./common";
 import Context from "./context";
 import { useDispatch } from "react-redux";
 import { setUserDetails } from "./store/userSlice";
+import "./App.css"
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,6 @@ const App = () => {
         credentials: "include",
       });
       const apiData = await dataRes.json();
-      console.log("Api data for home page: ", apiData);
       if (apiData.success) {
         dispatch(setUserDetails(apiData.data));
       }
