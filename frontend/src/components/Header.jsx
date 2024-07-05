@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import summaryApi from "../common";
 import { toast } from "react-toastify";
 import { setUserDetails } from "../store/userSlice";
+import Role from "../common/role"
 
 
 function Header() {
@@ -54,24 +55,34 @@ function Header() {
         {/* userIcon */}
         <div className="flex gap-4 items-center">
           <div className="relative group flex justify-center">
-            <div className="text-2xl cursor-pointer ">
-              {user?.profilePhoto ? (
-                <img
-                  src={user.profilePhoto}
-                  className="w-10 h-10 rounded-full"
-                  alt="User Profile"
-                  onClick={() => setDisplayMenu(prev => !prev)}
-                />
-              ) : (
-                <FaUserCircle onClick={() => setDisplayMenu(prev => !prev)} />
-              )}
-            </div>
+            {
+              user?._id && (
+                <div className="text-2xl cursor-pointer ">
+                  {user?.profilePhoto ? (
+                    <img
+                      src={user.profilePhoto}
+                      className="w-10 h-10 rounded-full"
+                      alt="User Profile"
+                      onClick={() => setDisplayMenu(prev => !prev)}
+                    />
+                  ) : (
+                    <FaUserCircle onClick={() => setDisplayMenu(prev => !prev)} />
+                  )}
+                </div>
+              )
+            }
+
             {displayMenu && (
               <div className="absolute bg-white top-12 shadow-lg rounded p-2 h-fit">
                 <nav>
-                  <Link to="/admin-panel" className="whitespace-nowrap hover:bg-slate-100 p-2 " onClick={() => setDisplayMenu(prev => !prev)}>
-                    Admin panel
-                  </Link>
+                  {
+                    user?.role === Role.ADMIN && (
+                      <Link to="/admin-panel/all-products" className="whitespace-nowrap hover:bg-slate-100 p-2 " onClick={() => setDisplayMenu(prev => !prev)}>
+                        Admin panel
+                      </Link>
+                    )
+                  }
+
                 </nav>
               </div>
             )}
