@@ -6,6 +6,7 @@ import authToken from "../middleware/authToken.js";
 import logOutUser from "../controller/logout.js";
 import allUsers from "../controller/allUsers.js";
 import updateUser from "../controller/updateUser.js";
+import UploadProductController from "../controller/uploadProduct.js";
 
 
 const router = express.Router()
@@ -20,4 +21,7 @@ router.get("/logout", logOutUser)
 router.get("/all-users", authToken, allUsers)
 router.post("/update-user", authToken, updateUser)
 
+// product
+
+router.post("/upload-product", authToken, UploadProductController)
 export default router
