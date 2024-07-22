@@ -1,8 +1,12 @@
 import React from 'react'
+import CategoryList from '../components/CategoryList'
+
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <CategoryList/>
+    </div>
   )
 }
 
