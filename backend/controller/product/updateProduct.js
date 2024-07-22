@@ -1,6 +1,6 @@
-import uploadProductPermission from "../utility/permission.js";
-import logger from "../utility/logger.js";
-import productModel from "../model/productModel.js"
+import uploadProductPermission from "../../utility/permission.js";
+import logger from "../../utility/logger.js";
+import productModel from "../../model/productModel.js"
 async function updateProduct(req, res) {
   try {
     if (!uploadProductPermission(req.userId)) {
