@@ -1,36 +1,41 @@
-import allUsers from "../../../backend/controller/allUsers"
-
-const backendDomain = "http://localhost:8080"
+const backendDomain = "http://localhost:8080";
 const summaryApi = {
   signUp: {
     url: `${backendDomain}/api/signup`,
-    method: "post"
+    method: "post",
   },
   signIn: {
     url: `${backendDomain}/api/signin`,
-    method: "post"
+    method: "post",
   },
   current_user: {
     url: `${backendDomain}/api/user-details`,
-    method: "get"
+    method: "get",
   },
   logOutUser: {
     url: `${backendDomain}/api/logout`,
-    method: "get"
+    method: "get",
   },
   allUsers: {
     url: `${backendDomain}/api/all-users`,
-    method: 'get'
+    method: "get",
   },
   updateUser: {
     url: `${backendDomain}/api/update-user`,
-    method: 'post'
+    method: "post",
   },
   uploadProduct: {
     url: `${backendDomain}/api/upload-product`,
-    method: 'post'
+    method: "post",
   },
-}
+  allProduct: {
+    url: `${backendDomain}/api/get-product`,
+    method: "get",
+  },
+  updateProduct: {
+    url: `${backendDomain}/api/update-product`,
+    method: "post",
+  },
+};
 
-
-export default summaryApi
+export default summaryApi;
