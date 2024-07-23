@@ -43,6 +43,37 @@ const summaryApi = {
   filterProduct: {
     url: `${backendDomain}/api/filter-product`,
     method: 'post'
+  },
+  productThroughtCate: {
+    url: `${backendDomain}/api/category-vise-product`,
+    method: 'post'
+  },
+  productDetails: {
+    url: `${backendDomain}/api/product-details`,
+    method: 'post'
+  },
+  addToCartProduct: {
+    url: `${backendDomain}/api/add-to-cart`,
+    method: 'post'
+  },
+  addToCartProductCount: {
+    url: `${backendDomain}/api/count-cart-product`,
+    method: 'get'
+  },
+  addToCartView: {
+    url: `${backendDomain}/api/view-cart-product`,
+    method: 'get'
+  },
+  updateCartProduct: {
+    url: `${backendDomain}/api/update-cart-product`
+  },
+  deleteCartProduct: {
+    url: `${backendDomain}/api/delete-cart-product`,
+    method: 'post'
+  },
+  searchProduct: {
+    url: `${backendDomain}/api/search`,
+    method: 'get'
   }
 };
 

@@ -10,6 +10,7 @@ import UploadProductController from "../controller/product/uploadProduct.js";
 import getProduct from "../controller/product/getProduct.js";
 import updateProduct from "../controller/product/updateProduct.js";
 import getProductCategory from "../controller/product/getProductCategory.js";
+import getProductThroughCat from "../controller/product/categoryViseProduct.js";
 
 
 const router = express.Router()
@@ -29,5 +30,6 @@ router.post("/upload-product", authToken, UploadProductController)
 router.get("/get-product", getProduct)
 router.post("/update-product", authToken, updateProduct)
 router.get("/get-product-category", getProductCategory)
+router.post("/category-vise-product", getProductThroughCat)
 
 export default router
